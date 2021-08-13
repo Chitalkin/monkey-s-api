@@ -2,6 +2,7 @@ import express from 'express';
 import cors, { CorsOptions } from 'cors';
 import helmet from 'helmet';
 import dotenv from 'dotenv';
+import morgan from 'morgan';
 import { json } from 'body-parser';
 
 /**
@@ -16,9 +17,18 @@ import cityRoutes from './routes/city';
 dotenv.config();
 const PORT: number = Number(process.env.APP_PORT) || 3000;
 const HOST: string = process.env.APP_HOST || 'localhost';
+
+/**
+ * Cors
+ */
 const corsSettings: CorsOptions = {
   origin: '*',
 };
+
+/**
+ * Logger
+ */
+morgan('tiny');
 
 /**
  * App
