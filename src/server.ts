@@ -26,11 +26,6 @@ const corsSettings: CorsOptions = {
 };
 
 /**
- * Logger
- */
-morgan('tiny');
-
-/**
  * App
  */
 const app = express();
@@ -41,6 +36,7 @@ const app = express();
 app.use(json());
 app.use(helmet());
 app.use(cors(corsSettings));
+app.use(morgan('combined'));
 
 app.use('/weather', weatherRoutes);
 app.use('/cities', cityRoutes);
