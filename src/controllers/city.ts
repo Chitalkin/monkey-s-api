@@ -17,7 +17,7 @@ const findCityByName: RequestHandler = (req, res) => {
   const { name = '' } = req.query;
   let filteredCities: City[] = [];
 
-  if (typeof name === 'string') {
+  if (typeof name === 'string' && name.length > 0) {
     filteredCities = cities.filter(
       (city) => city.name.toLowerCase().includes(name),
     );
