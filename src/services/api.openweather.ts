@@ -1,11 +1,11 @@
 import fetch from 'node-fetch';
 
-const getCityWeather = async (lat: string, lon: string) => {
+const fetchWeather = async (lat: string, lon: string) => {
   const url = new URL('https://api.openweathermap.org/data/2.5/weather');
 
   url.searchParams.set('lat', lat);
   url.searchParams.set('lon', lon);
-  url.searchParams.set('appid', process.env.API_KEY || '');
+  url.searchParams.set('appid', process.env.API_WEATHER_KEY || '');
   url.searchParams.set('lang', 'ru');
   url.searchParams.set('units', 'metric');
 
@@ -23,4 +23,4 @@ const getCityWeather = async (lat: string, lon: string) => {
 /**
  * Export
  */
-export default getCityWeather;
+export default fetchWeather;

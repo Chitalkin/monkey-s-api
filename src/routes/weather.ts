@@ -3,7 +3,7 @@ import { Router } from 'express';
 /**
  * Controllers
  */
-import fetchWeather from '../controllers/weather';
+import getCityWeather from '../controllers/weather';
 
 /**
  * Init
@@ -13,7 +13,7 @@ const router = Router();
 /**
  * Methods
  */
-router.get('/', fetchWeather);
+router.get('/', getCityWeather);
 
 /**
  * Export

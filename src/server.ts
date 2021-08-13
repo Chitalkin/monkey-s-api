@@ -13,8 +13,8 @@ import cityRoutes from './routes/city';
  * Config
  */
 dotenv.config();
-const PORT: number = Number(process.env.PORT) || 3000;
-const HOST: string = process.env.HOST || 'localhost';
+const PORT: number = Number(process.env.APP_PORT) || 3000;
+const HOST: string = process.env.APP_HOST || 'localhost';
 
 /**
  * App
@@ -28,7 +28,7 @@ app.use(json());
 app.use(helmet());
 
 app.use('/weather', weatherRoutes);
-app.use('/city', cityRoutes);
+app.use('/cities', cityRoutes);
 
 /**
  * Starting app

@@ -8,14 +8,14 @@ import prepareWeatherInfo from '../helpers/prepareWeatherInfo';
 /**
  * Weather service
  */
-import getCityWeather from '../services/api.openweather';
+import fetchWeather from '../services/api.openweather';
 
-const fetchWeather: RequestHandler = async (req, res) => {
+const getCityWeather: RequestHandler = async (req, res) => {
   const { lat = '', lon = '' } = req.query;
 
   if (typeof lat === 'string' && typeof lon === 'string') {
     try {
-      const weather = await getCityWeather(lat, lon);
+      const weather = await fetchWeather(lat, lon);
 
       res.json(prepareWeatherInfo(weather));
     } catch (error) {
@@ -29,4 +29,4 @@ const fetchWeather: RequestHandler = async (req, res) => {
 /**
  * Export
  */
-export default fetchWeather;
+export default getCityWeather;
