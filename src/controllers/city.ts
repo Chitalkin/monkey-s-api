@@ -19,7 +19,7 @@ const findCityByName: RequestHandler = (req, res) => {
 
   if (typeof name === 'string' && name.length > 0) {
     filteredCities = cities.filter(
-      (city) => city.name.toLowerCase().includes(name),
+      (city) => city.name.toLowerCase().includes(name.toLowerCase()),
     );
   }
 
