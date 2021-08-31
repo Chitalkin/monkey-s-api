@@ -3,30 +3,45 @@ import { RequestHandler } from 'express';
 /**
  * Helpers
  */
-import prepareWeatherInfo from '../helpers/prepareWeatherInfo';
+import { prepareNowWeatherInfo, prepareWeekWeatherInfo } from '../helpers';
 
 /**
  * Weather service
  */
-import fetchWeather from '../services/api.openweather';
+import { fetchCurrentWeather, fetchWeatherByDay } from '../services/weatherApi';
 
-const getCityWeather: RequestHandler = async (req, res) => {
+export const getCurrentCityWeather: RequestHandler = async (req, res) => {
   const { lat = '', lon = '' } = req.query;
 
   if (typeof lat === 'string' && typeof lon === 'string') {
     try {
-      const weather = await fetchWeather(lat, lon);
+      const response = await fetchCurrentWeather(lat, lon);
 
-      res.json(prepareWeatherInfo(weather));
+      if (response.cod === 401) {
+        res.json(response);
+      } else {
+        res.json(prepareNowWeatherInfo(response));
+      }
     } catch (error) {
-      res.status(503).json({ message: error.message });
+      res.status(503).json(error);
     }
   } else {
     res.status(400).json({ code: 400, message: 'Invalid query parameters' });
   }
 };
 
-/**
- * Export
- */
-export default getCityWeather;
+export const getCityWeatherByDay: RequestHandler = async (req, res) => {
+  const { lat = '', lon = '' } = req.query;
+
+  if (typeof lat === 'string' && typeof lon === 'string') {
+    try {
+      const response = await fetchWeatherByDay(lat, lon);
+
+      res.json(prepareWeekWeatherInfo(response));
+    } catch (error) {
+      res.status(503).json(error);
+    }
+  } else {
+    res.status(400).json({ code: 400, message: 'Invalid query parameters' });
+  }
+};

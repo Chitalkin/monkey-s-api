@@ -3,7 +3,7 @@ import { Router } from 'express';
 /**
  * Controllers
  */
-import findCityByName from '../controllers/city';
+import { findCityByName } from '../controllers/city';
 
 /**
  * Init
@@ -11,7 +11,7 @@ import findCityByName from '../controllers/city';
 const router = Router();
 
 /**
- * Methods
+ * Routes
  */
 router.get('/', findCityByName);
 

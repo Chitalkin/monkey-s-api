@@ -3,7 +3,10 @@ import { Router } from 'express';
 /**
  * Controllers
  */
-import getCityWeather from '../controllers/weather';
+import {
+  getCurrentCityWeather,
+  getCityWeatherByDay,
+} from '../controllers/weather';
 
 /**
  * Init
@@ -11,9 +14,10 @@ import getCityWeather from '../controllers/weather';
 const router = Router();
 
 /**
- * Methods
+ * Routes
  */
-router.get('/', getCityWeather);
+router.get('/now', getCurrentCityWeather);
+router.get('/week', getCityWeatherByDay);
 
 /**
  * Export

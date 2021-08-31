@@ -4,7 +4,8 @@
         "es2021": true
     },
     "extends": [
-        "airbnb-base"
+        "google",
+        "plugin:prettier/recommended"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -15,37 +16,39 @@
         "@typescript-eslint"
     ],
     "rules": {
-        "import/extensions": [
+        "object-curly-spacing": [
             "error",
-            "ignorePackages",
+            "always",
             {
-                "js": "never",
-                "ts": "never"
+                "arraysInObjects": false
             }
         ],
-        "max-len": [
+        "prettier/prettier": [
             "error",
             {
-                "code": 80
+                "endOfLine": "auto"
+            },
+            {
+                "usePrettierrc": true
             }
         ],
-        "quotes": [
+        "new-cap": [
             "error",
-            "single"
+            {
+                "capIsNew": false
+            }
         ],
-        "semi": [
+        "require-jsdoc": [
             "error",
-            "always"
+            {
+                "require": {
+                    "FunctionDeclaration": false,
+                    "MethodDefinition": false,
+                    "ClassDeclaration": false,
+                    "ArrowFunctionExpression": false,
+                    "FunctionExpression": false
+                }
+            }
         ]
-    },
-    "settings": {
-        "import/resolver": {
-            "node": {
-                "extensions": [
-                    ".ts",
-                    ".js"
-                ]
-            }
-        }
     }
 }

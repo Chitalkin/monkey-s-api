@@ -5,28 +5,23 @@ import { join } from 'path';
  * Typings
  */
 import { RequestHandler } from 'express';
-import { City } from '../types';
+import { City } from '../models';
 
 /**
- * Cities
+ * Array of cities
  */
 const json = readFileSync(join(__dirname, '../data/cities.json'));
 const cities: City[] = JSON.parse(json.toString());
 
-const findCityByName: RequestHandler = (req, res) => {
+export const findCityByName: RequestHandler = (req, res) => {
   const { name = '' } = req.query;
   let filteredCities: City[] = [];
 
   if (typeof name === 'string' && name.length > 0) {
-    filteredCities = cities.filter(
-      (city) => city.name.toLowerCase().includes(name.toLowerCase()),
+    filteredCities = cities.filter(city =>
+      city.name.toLowerCase().includes(name.toLowerCase()),
     );
   }
 
   res.json(filteredCities);
 };
-
-/**
- * Export
- */
-export default findCityByName;
