@@ -31,9 +31,9 @@ export const fetchWeatherByDay = (lat: string, lon: string) => {
 
 export const fetchCurrentWeather = (lat: string, lon: string) => {
   const url = setBaseUrlSettings(
+    'https://api.openweathermap.org/data/2.5/weather',
     lat,
     lon,
-    'https://api.openweathermap.org/data/2.5/weather',
   );
 
   return fetchWeather<CurrentWeatherResponse>(url);
