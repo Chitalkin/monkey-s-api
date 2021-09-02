@@ -36,6 +36,10 @@ export const prepareNowWeatherInfo = (
     condition: response.weather[0].description,
     icon: response.weather[0].main,
   },
+  coord: {
+    lon: response.coord.lon,
+    lat: response.coord.lat,
+  },
 });
 
 export const prepareWeekWeatherInfo = (

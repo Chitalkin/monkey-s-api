@@ -98,6 +98,10 @@ type DayWeather = {
 export type CurrentWeatherApi = {
   city: string;
   weather: DayWeather;
+  coord: {
+    lon: number;
+    lat: number;
+  };
 };
 
 export type WeekDayWeather = {
