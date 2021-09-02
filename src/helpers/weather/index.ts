@@ -45,7 +45,7 @@ export const prepareNowWeatherInfo = (
 export const prepareWeekWeatherInfo = (
   response: DailyWeatherResponse,
 ): WeekWeatherApi => {
-  const neededDays = response.daily.slice(1, 4);
+  const neededDays = response.daily.slice(1, 8);
 
   const transformedDays: WeekDayWeather[] = neededDays.map(day => {
     const [loceleDay, localeDate] = getLocaleDate(day.dt);
