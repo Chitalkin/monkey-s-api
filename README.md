@@ -62,6 +62,10 @@
       wind_dir: string;
       humidity: number;
     };
+    coord: {
+      lon: number;
+      lat: number;
+    }
   }
 ```
 
